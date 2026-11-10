@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food Wastage Management Website</title>
+</head>
+<body>
+
+<header>
+  <p><strong>R.M.K. Engineering College</strong> (An Autonomous Institution)</p>
+  <h1>Food Wastage Management Website</h1>
+  <p>Mini Project Report &mdash; Foundations of Full Stack (Subject Code: 26CS102)<br>
+  Academic Year 2026&ndash;27 | Odd Semester</p>
+  <nav aria-label="Main navigation">
+    <a href="#home">Home</a> |
+    <a href="#login">Login</a> |
+    <a href="#signup">Sign Up</a> |
+    <a href="#add-food">Add Food</a> |
+    <a href="#available-food">Available Food</a> |
+    <a href="#report">Project Report</a> |
+    <a href="#about">About / Contact</a>
+  </nav>
+  <hr>
+</header>
+
+<main>
+
+<section id="home">
+  <h2>Home</h2>
+  <p>Food wastage is a practical problem in homes, hostels, canteens, restaurants and events. This website lets food donors list surplus edible food and lets authorised recipient organisations express interest in collecting it.</p>
+  <p>Each listing records the food details, quantity, pickup location, availability time and status, improving coordination and reducing avoidable waste.</p>
+  <h3>Who is it for?</h3>
+  <ul>
+    <li><strong>Food donors:</strong> canteens, restaurants, event organisers and households.</li>
+    <li><strong>Recipients:</strong> registered charities, community kitchens and authorised volunteers.</li>
+    <li><strong>Administrator:</strong> reviews listings, manages reports and maintains basic platform records.</li>
+  </ul>
+</section>
+
+<hr>
+
+<section id="login">
+  <h2>Login</h2>
+  <p>Registered donors, recipients and administrators can sign in here.</p>
+  <form action="#home" method="post">
+    <fieldset>
+      <legend>Sign in to your account</legend>
+      <p>
+        <label for="loginEmail">Email address:</label><br>
+        <input type="email" id="loginEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+      </p>
+      <p>
+        <label for="loginPassword">Password:</label><br>
+        <input type="password" id="loginPassword" name="password" required minlength="8" autocomplete="current-password">
+      </p>
+      <p>
+        <label for="loginRole">Login as:</label><br>
+        <select id="loginRole" name="role" required>
+          <option value="">-- Select role --</option>
+          <option>Donor</option>
+          <option>Recipient</option>
+          <option>Administrator</option>
+        </select>
+      </p>
+      <p>
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Remember me</label>
+      </p>
+      <p>
+        <button type="submit">Login</button>
+        <button type="reset">Clear</button>
+      </p>
+    </fieldset>
+  </form>
+  <p>New here? <a href="#signup">Create an account</a></p>
+</section>
+
+<hr>
+
+<section id="signup">
+  <h2>Sign Up</h2>
+  <p>Create an account to donate surplus food or to request food as a recipient organisation.</p>
+  <form action="#login" method="post">
+    <fieldset>
+      <legend>Create a new account</legend>
+      <p>
+        <label for="fullName">Full name:</label><br>
+        <input type="text" id="fullName" name="fullName" required autocomplete="name">
+      </p>
+      <p>
+        <label for="signupEmail">Email address:</label><br>
+        <input type="email" id="signupEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+      </p>
+      <p>
+        <label for="phone">Phone number:</label><br>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
+      </p>
+      <p>
+        <label for="signupRole">I am registering as:</label><br>
+        <select id="signupRole" name="role" required>
+          <option value="">-- Select role --</option>
+          <option>Donor (canteen, restaurant, event organiser, household)</option>
+          <option>Recipient (charity, community kitchen, volunteer)</option>
+        </select>
+      </p>
+      <p>
+        <label for="organisation">Organisation name (optional):</label><br>
+        <input type="text" id="organisation" name="organisation">
+      </p>
+      <p>
+        <label for="signupPassword">Password (minimum 8 characters):</label><br>
+        <input type="password" id="signupPassword" name="password" required minlength="8" autocomplete="new-password">
+      </p>
+      <p>
+        <label for="confirmPassword">Confirm password:</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8" autocomplete="new-password">
+      </p>
+      <p>
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to share only safe, edible food and to keep personal data private.</label>
+      </p>
+      <p>
+        <button type="submit">Sign Up</button>
+        <button type="reset">Clear</button>
+      </p>
+    </fieldset>
+  </form>
+  <p>Already have an account? <a href="#login">Login</a></p>
+  <p><small>Note: Without JavaScript or a backend, this page cannot check that the two passwords match, create the account or log you in. The browser only checks the required fields, email format, phone number and password length.</small></p>
+</section>
+
+<hr>
+
+<section id="add-food">
+  <h2>Add Food</h2>
+  <p>Donors can enter surplus-food details below. Required fields are checked by the browser before submission.</p>
+  <form action="#available-food" method="get">
+    <fieldset>
+      <legend>New surplus-food listing</legend>
+      <p>
+        <label for="foodName">Food name:</label><br>
+        <input type="text" id="foodName" name="foodName" required placeholder="e.g. Vegetable biryani">
+      </p>
+      <p>
+        <label for="category">Category:</label><br>
+        <select id="category" name="category" required>
+          <option value="">-- Select category --</option>
+          <option>Cooked meals</option>
+          <option>Bakery</option>
+          <option>Fruits and vegetables</option>
+          <option>Packaged food</option>
+          <option>Beverages</option>
+        </select>
+      </p>
+      <p>
+        <label for="quantity">Approximate quantity (servings / kg):</label><br>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+      </p>
+      <p>
+        <label for="location">Pickup location:</label><br>
+        <input type="text" id="location" name="location" required placeholder="e.g. College canteen">
+      </p>
+      <p>
+        <label for="availableUntil">Available until:</label><br>
+        <input type="datetime-local" id="availableUntil" name="availableUntil" required>
+      </p>
+      <p>
+        <button type="submit">Add listing</button>
+        <button type="reset">Clear</button>
+      </p>
+    </fieldset>
+  </form>
+</section>
+
+<hr>
+
+<section id="available-food">
+  <h2>Available Food</h2>
+  <p>Browse and search current listings.</p>
+  <form action="#available-food" method="get">
+    <p>
+      <label for="search">Search keyword:</label>
+      <input type="search" id="search" name="search" placeholder="Search food or location">
+      <label for="filter">Category:</label>
+      <select id="filter" name="filter">
+        <option>All</option>
+        <option>Cooked meals</option>
+        <option>Bakery</option>
+        <option>Fruits and vegetables</option>
+        <option>Packaged food</option>
+        <option>Beverages</option>
+      </select>
+      <button type="submit">Filter</button>
+    </p>
+  </form>
+
+  <p><em>Sample listings (demonstration data):</em></p>
+
+  <article>
+    <h3>Vegetable Biryani</h3>
+    <ul>
+      <li>Category: Cooked meals</li>
+      <li>Quantity: 40 servings</li>
+      <li>Pickup location: College canteen</li>
+      <li>Available until: Today, 8:00 PM</li>
+      <li>Status: <strong>Available</strong></li>
+    </ul>
+    <p><button type="button">Mark as Requested</button> <button type="button">Mark as Collected</button></p>
+  </article>
+
+  <article>
+    <h3>Bread and Buns</h3>
+    <ul>
+      <li>Category: Bakery</li>
+      <li>Quantity: 15 kg</li>
+      <li>Pickup location: Main Street Bakery</li>
+      <li>Available until: Today, 9:30 PM</li>
+      <li>Status: <strong>Requested</strong></li>
+    </ul>
+    <p><button type="button">Mark as Collected</button></p>
+  </article>
+
+  <article>
+    <h3>Fresh Fruit Boxes</h3>
+    <ul>
+      <li>Category: Fruits and vegetables</li>
+      <li>Quantity: 25 kg</li>
+      <li>Pickup location: Community Hall</li>
+      <li>Available until: Tomorrow, 10:00 AM</li>
+      <li>Status: <strong>Collected</strong></li>
+    </ul>
+  </article>
+
+  <p><small>Note: This pure-HTML version has no scripting, so listings and status buttons are static. A backend or JavaScript is needed to store and update listings.</small></p>
+</section>
+
+<hr>
+
+<section id="report">
+  <h2>Project Report</h2>
+
+  <nav aria-label="Report contents">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#problem">Problem Statement and Objectives</a></li>
+      <li><a href="#scope">Scope and Feasibility</a></li>
+      <li><a href="#srs">Software Requirements Specification (SRS)</a></li>
+      <li><a href="#design">System Design</a></li>
+      <li><a href="#implementation">Implementation Plan and Web Interface</a></li>
+      <li><a href="#testing">Testing and Validation</a></li>
+      <li><a href="#limitations">Limitations and Future Enhancements</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </nav>
+
+  <h3 id="abstract">Abstract</h3>
+  <p>Food wastage is a practical problem in homes, hostels, canteens, restaurants and events. This project proposes a simple website through which food donors can list surplus edible food and authorised recipient organisations can express interest in collecting it. The website records food details, quantity, pickup location, availability time and status. The proposed solution aims to improve coordination, reduce avoidable waste and make surplus-food redistribution easier. This report contains the Software Requirements Specification (SRS), system design, implementation plan, testing approach and sample web-page implementation.</p>
+
+  <h3 id="intro">1. Introduction</h3>
+  <p>Food wastage occurs when edible food is discarded or remains unused despite being potentially useful to others. Surplus food may be available at canteens, restaurants, functions and households, while community groups may be able to redistribute it. A central website can help connect these groups and provide a clear record of available food and collection status.</p>
+  <h4>Purpose</h4>
+  <p>To design and demonstrate a responsive client-side website that organises surplus-food listings and helps donors and recipients coordinate collection.</p>
+  <h4>Definitions</h4>
+  <dl>
+    <dt>Donor</dt><dd>A person or organisation offering surplus food.</dd>
+    <dt>Recipient</dt><dd>An organisation or authorised person requesting a listing.</dd>
+    <dt>Listing</dt><dd>A record containing food details and pickup information.</dd>
+    <dt>Responsive design</dt><dd>A layout that adapts to different screen sizes.</dd>
+  </dl>
+
+  <h3 id="problem">2. Problem Statement and Objectives</h3>
+  <p>Surplus food information is often shared informally, which can lead to delays, missed collections and limited visibility. The proposed website provides a single interface to publish and browse available food listings.</p>
+  <h4>Objectives</h4>
+  <ul>
+    <li>Provide a simple form to add a surplus-food listing.</li>
+    <li>Display available listings in a readable, searchable layout.</li>
+    <li>Capture quantity, food category, pickup location and availability time.</li>
+    <li>Allow users to mark a listing as requested or collected in the demonstration.</li>
+    <li>Use semantic HTML, responsive CSS and JavaScript DOM/event handling.</li>
+    <li>Demonstrate basic version-control practices with Git and GitHub.</li>
+  </ul>
+
+  <h3 id="scope">3. Scope and Feasibility</h3>
+  <h4>Project Scope</h4>
+  <p>The academic prototype focuses on the user interface and client-side behaviour. It can add listings, filter them by keyword/category and update their status during a browser session. A production deployment would require a backend, database, secure user accounts and operational procedures.</p>
+  <h4>Feasibility</h4>
+  <ul>
+    <li><strong>Technical:</strong> HTML5, CSS3 and JavaScript are sufficient for a working front-end prototype.</li>
+    <li><strong>Economic:</strong> the prototype can be developed using free tools and a standard computer.</li>
+    <li><strong>Operational:</strong> the forms and listing cards are designed for users with basic web familiarity.</li>
+    <li><strong>Schedule:</strong> the work can be completed in stages &mdash; requirements, design, coding, testing and documentation.</li>
+  </ul>
+
+  <h3 id="srs">4. Software Requirements Specification (SRS)</h3>
+  <h4>Functional Requirements</h4>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <caption>Functional requirements</caption>
+    <thead><tr><th scope="col">ID</th><th scope="col">Requirement</th></tr></thead>
+    <tbody>
+      <tr><td>FR-01</td><td>The system shall allow a donor to enter food name, category, quantity, pickup location and available-until time.</td></tr>
+      <tr><td>FR-02</td><td>The system shall validate required fields before adding a listing.</td></tr>
+      <tr><td>FR-03</td><td>The system shall display active listings as cards.</td></tr>
+      <tr><td>FR-04</td><td>The system shall filter listings using a keyword and category.</td></tr>
+      <tr><td>FR-05</td><td>The system shall allow a listing status to be changed to Requested or Collected.</td></tr>
+      <tr><td>FR-06</td><td>The system shall show a clear message when no listing matches the filter.</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Non-Functional Requirements</h4>
+  <ul>
+    <li><strong>Usability:</strong> clear labels, readable text and straightforward navigation.</li>
+    <li><strong>Accessibility:</strong> semantic headings, labels associated with inputs and keyboard-friendly controls.</li>
+    <li><strong>Responsiveness:</strong> usable on desktop, tablet and mobile screens.</li>
+    <li><strong>Reliability:</strong> invalid or incomplete form entries should not create listings.</li>
+    <li><strong>Maintainability:</strong> separate HTML, CSS and JavaScript files.</li>
+    <li><strong>Privacy and safety:</strong> a real deployment must protect user data and avoid publishing sensitive personal information.</li>
+  </ul>
+
+  <h4>Hardware and Software Requirements</h4>
+  <p><strong>Hardware:</strong> computer or laptop, keyboard, mouse/touchpad and internet access for optional hosting.</p>
+  <p><strong>Software:</strong> modern web browser, text editor (such as Visual Studio Code) and Git. The prototype uses HTML5, CSS3 and vanilla JavaScript; no paid software is required.</p>
+
+  <h3 id="design">5. System Design</h3>
+  <h4>Architecture</h4>
+  <p>For the prototype, the browser renders the HTML interface, CSS controls presentation and JavaScript validates forms, filters listings and updates status. Listing data is held in memory for the current session; it is not shared across users.</p>
+  <p><strong>Donor / Recipient</strong> &rarr; <strong>Web Interface (HTML)</strong> &rarr; <strong>JavaScript Validation &amp; Filtering</strong> &rarr; <strong>Listing Cards and Status</strong></p>
+
+  <h4>Data Model</h4>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <caption>Listing data model</caption>
+    <thead><tr><th scope="col">Field</th><th scope="col">Description</th></tr></thead>
+    <tbody>
+      <tr><td>id</td><td>Unique identifier for a listing</td></tr>
+      <tr><td>foodName</td><td>Name or description of the food</td></tr>
+      <tr><td>category</td><td>Food category</td></tr>
+      <tr><td>quantity</td><td>Approximate quantity available</td></tr>
+      <tr><td>location</td><td>Pickup location</td></tr>
+      <tr><td>availableUntil</td><td>Collection deadline</td></tr>
+      <tr><td>status</td><td>Available, Requested or Collected</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Use Cases</h4>
+  <ul>
+    <li>Donor adds a listing and checks the details before submission.</li>
+    <li>Recipient browses and filters currently available listings.</li>
+    <li>Recipient marks an appropriate listing as Requested.</li>
+    <li>After collection, the listing is marked Collected so it is no longer treated as available.</li>
+  </ul>
+
+  <h3 id="implementation">6. Implementation Plan and Web Interface</h3>
+  <h4>Technologies</h4>
+  <p>HTML5 provides the structure and accessible form controls. CSS3 provides responsive layout, spacing, colours and card styling. JavaScript (ES6+) handles form submission, validation, DOM updates and filtering. Git/GitHub can be used to track changes and maintain project versions.</p>
+
+  <h4>Suggested Project Structure</h4>
+<pre>food-wastage-management/
+ |-- index.html
+ |-- style.css
+ |-- script.js
+ |-- README.md</pre>
+
+  <h4>Main Pages / Sections</h4>
+  <ul>
+    <li><strong>Home:</strong> introduces the purpose of the website.</li>
+    <li><strong>Login / Sign Up:</strong> forms for registering and signing in as a donor, recipient or administrator.</li>
+    <li><strong>Add Food:</strong> form for creating a surplus-food listing.</li>
+    <li><strong>Available Food:</strong> cards containing food details and status actions.</li>
+    <li><strong>About / Contact:</strong> explains the project and provides a contact method in a production version.</li>
+  </ul>
+
+  <h4>Core Interaction Flow</h4>
+  <ol>
+    <li>Open the website in a browser.</li>
+    <li>Enter the food details in the Add Food form.</li>
+    <li>Submit the form; JavaScript checks required fields.</li>
+    <li>A valid listing appears in the available-food section.</li>
+    <li>Use the search/filter controls to find a listing.</li>
+    <li>Update its status when it is requested or collected.</li>
+  </ol>
+  <blockquote><strong>Implementation note:</strong> This report specifies the front-end behaviour and file structure. The prototype must be coded and tested in the listed files before claiming a live, fully deployed system.</blockquote>
+
+  <h3 id="testing">7. Testing and Validation</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <caption>Test cases</caption>
+    <thead><tr><th scope="col">Test ID</th><th scope="col">Test case</th><th scope="col">Expected result</th></tr></thead>
+    <tbody>
+      <tr><td>TC-01</td><td>Submit empty form</td><td>Required-field validation prevents submission</td></tr>
+      <tr><td>TC-02</td><td>Submit valid food details</td><td>New listing appears in the list</td></tr>
+      <tr><td>TC-03</td><td>Search using a matching keyword</td><td>Only matching listings are shown</td></tr>
+      <tr><td>TC-04</td><td>Search using a non-matching keyword</td><td>No-results message is shown</td></tr>
+      <tr><td>TC-05</td><td>Mark listing as Requested</td><td>Status label updates</td></tr>
+      <tr><td>TC-06</td><td>Mark listing as Collected</td><td>Status label updates and listing is not shown as available</td></tr>
+      <tr><td>TC-07</td><td>Open at narrow screen width</td><td>Layout adapts without horizontal overflow</td></tr>
+    </tbody>
+  </table>
+  <p>Testing should be carried out in a modern browser after implementation. Record actual results (Pass/Fail) and correct defects before submission.</p>
+
+  <h3 id="limitations">8. Limitations and Future Enhancements</h3>
+  <h4>Limitations</h4>
+  <ul>
+    <li>Data is stored only in the current browser session and is not synchronised between users.</li>
+    <li>No real authentication, database, donor verification, notifications or map integration is included in the front-end design.</li>
+    <li>Food safety, collection, transport and recipient eligibility require real-world procedures beyond the website.</li>
+  </ul>
+  <h4>Future Enhancements</h4>
+  <ul>
+    <li>Add a backend API and database for persistent listings.</li>
+    <li>Introduce secure sign-in and role-based permissions.</li>
+    <li>Add recipient verification, collection confirmations and email/SMS notifications.</li>
+    <li>Integrate maps for pickup coordination and provide an administrator dashboard.</li>
+    <li>Use the Fetch API to load and update JSON data from a server.</li>
+  </ul>
+
+  <h3 id="conclusion">9. Conclusion</h3>
+  <p>The Food Wastage Management Website is a practical full-stack foundations project that applies semantic HTML, responsive CSS and JavaScript interaction to a community problem. Its requirements and design define a clear path from food listing creation to collection status updates. The front-end prototype can be extended with a secure backend and database to support real multi-user coordination.</p>
+
+  <h3 id="references">10. References</h3>
+  <ol>
+    <li>R.M.K. Engineering College, &ldquo;Foundations of Full Stack &ndash; Mini Project Suggestions, Academic Year 2026&ndash;27 (Odd Semester),&rdquo; course handout supplied for this assignment.</li>
+    <li>MDN Web Docs, HTML: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">https://developer.mozilla.org/en-US/docs/Web/HTML</a></li>
+    <li>MDN Web Docs, CSS: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">https://developer.mozilla.org/en-US/docs/Web/CSS</a></li>
+    <li>MDN Web Docs, JavaScript: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></li>
+    <li>Git documentation: <a href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
+  </ol>
+</section>
+
+<hr>
+
+<section id="about">
+  <h2>About / Contact</h2>
+  <address>
+    <strong>Name:</strong> Phranav Kumar S<br>
+    <strong>Registration Number:</strong> 111726114033<br>
+    <strong>Department:</strong> Electronics and Communication Engineering (Advanced Communication Technology)<br>
+    <strong>Institution:</strong> R.M.K. Engineering College
+  </address>
+  <p>A contact method (email/phone) would be provided in a production version.</p>
+</section>
+
+</main>
+
+<footer>
+  <hr>
+  <p><small>&copy; 2026 Food Wastage Management Website &mdash; Mini Project, 26CS102. <a href="#home">Back to top</a></small></p>
+</footer>
+
+</body>
+</html>
